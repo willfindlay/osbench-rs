@@ -9,7 +9,7 @@ pub fn create_threads() -> Result<()> {
     let mut handles = vec![];
 
     // Spawn threads
-    for _ in 0..handles.len() {
+    for _ in 0..100 {
         handles.push(match thread::Builder::new().spawn(|| {}) {
             Ok(handle) => handle,
             Err(e) => return Err(Error::ThreadSpawnError(format!("{}", e))),
