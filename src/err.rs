@@ -13,6 +13,10 @@ pub enum Error {
     ProcessSpawnError(String),
     #[error("Failed to wait for process: {0}")]
     ProcessWaitError(String),
+    #[error("Failed to spawn a new thread: {0}")]
+    ThreadSpawnError(String),
+    #[error("Failed to join thread: {0}")]
+    ThreadJoinError(String),
 }
 
 pub type Result<T> = result::Result<T, Error>;
