@@ -9,13 +9,14 @@ pub fn create_threads() -> Result<()> {
     let mut handles = vec![];
 
     // Spawn threads
-    for _ in 0..100 {
+    for _ in 0..NUM_THREADS {
         handles.push(match thread::Builder::new().spawn(|| {}) {
             Ok(handle) => handle,
             Err(e) => return Err(Error::ThreadSpawnError(format!("{}", e))),
         });
     }
 
+    // Join threads
     for handle in handles {
         match handle.join() {
             Ok(_) => {}
